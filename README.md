@@ -1,1 +1,1 @@
-This is my repository for practice on the course https://brunoyam.com/kursy-programmirovaniya/python
+This is repository for my practice on the course https://brunoyam.com/kursy-programmirovaniya/python
