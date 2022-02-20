@@ -3,6 +3,7 @@ from random import randint
 n = int(input("Введите размер массива: "))
 numbers = [randint(0, 100) for i in range(n)]
 
+
 def calc_maximum(list_numbers):
     list_numbers.sort(reverse=True)
     result = ""
@@ -15,6 +16,7 @@ def calc_maximum(list_numbers):
         else:
             result = result + str(i)
     return result
+
 
 numbers1 = [56, 9, 11, 2]
 numbers2 = [3, 81, 5]
