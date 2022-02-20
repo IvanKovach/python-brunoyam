@@ -23,9 +23,11 @@ def login_function(login, passwd):
     else:
         return print("Неверный логин или пароль!")
 
-
+task = input("Вход или регистрация?")
 new_user_login = input("Введите логин: ")
 new_user_passwd = input("Введите пароль: ")
 
-register(new_user_login, new_user_passwd)
-login_function(new_user_login, new_user_passwd)
+if task == "регистрация":
+    register(new_user_login, new_user_passwd)
+elif task == "вход":
+    login_function(new_user_login, new_user_passwd)
