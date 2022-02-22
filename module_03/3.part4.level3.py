@@ -23,7 +23,17 @@ def login_function(login, passwd):
     else:
         return print("Неверный логин или пароль!")
 
-task = input("Вход или регистрация?")
+
+try:
+    with open('users.json', 'r') as file:
+        json.load(file)
+except FileNotFoundError:
+    test_user = dict()
+    test_user["testuser"] = "testpasswd"
+    with open('users.json', 'w') as file:
+        json.dump(test_user, file)
+
+task = input("Вход или регистрация: ")
 new_user_login = input("Введите логин: ")
 new_user_passwd = input("Введите пароль: ")
 
@@ -31,3 +41,5 @@ if task == "регистрация":
     register(new_user_login, new_user_passwd)
 elif task == "вход":
     login_function(new_user_login, new_user_passwd)
+else:
+    print("Операция не поддерживается")
