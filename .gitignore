@@ -1,1 +1,2 @@
-module_09/venv/
+venv/
+.env
