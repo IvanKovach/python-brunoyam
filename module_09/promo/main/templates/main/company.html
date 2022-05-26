@@ -1,0 +1,16 @@
+{% extends "main/base.html" %}
+{% block title %}
+    <title>{{ title }}</title>
+{% endblock %}
+{% block content %}
+    <center><h2> {{ company.company_name }} </h2></center>
+    <center><h4> {{ company.company_description }} </h4></center>
+    <br>
+    <center><h3> Дома участвующие в компании </h3></center>
+    {% for el in data %}
+        <h3>{{el.city}}</h3>
+        <h4>{{el.street}} {{ el.house_number}}</h4>
+        <hr>
+        <br>
+    {% endfor %}
+{% endblock %}

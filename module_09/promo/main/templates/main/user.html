@@ -1,0 +1,12 @@
+{% extends "main/base.html" %}
+{% block title %}
+    <title> UsersInfo </title>
+{% endblock %}
+{% block content %}
+    {% for el in data %}
+        <h2>{{ el.name }} {{ el.surname }}</h2>
+        <h5>{{ el.email }}</h5>
+        <h5>{{ el.phone }}</h5>
+        <br>
+    {% endfor %}
+{% endblock %}

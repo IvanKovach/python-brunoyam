@@ -1,0 +1,70 @@
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <meta charset="utf-8">
+    {% block title %}
+
+    {% endblock %}
+</head>
+<body>
+
+
+<nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'Main' %}">ПромоКомпании "KO"</a>
+             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                 <span class="navbar-toggler-icon"></span>
+             </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-link active" aria-current="page" href="{% url 'Main' %}">Компании</a>
+            <a class="nav-link disabled">Статистика</a>
+            <a class="nav-link" href="/info">Инфо</a>
+            <a class="nav-link" href="{% url 'users' %}">Личный кабинет</a>
+            <a class="nav-link" href="{% url 'sign_up' %}">Регистрация</a>
+            {% if user.is_authenticated %}
+            <a class="nav-link disabled" href="/accounts/login">Войти</a>
+            {% else %}
+            <a class="nav-link" href="/accounts/login">Войти</a>
+            {% endif %}
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+{% block content %}
+<div>
+    {% if user.is_authenticated %}
+    <h2>
+        Приветствуем вас, {{user.username }} !
+    </h2>
+    <p>Имя: {{user.name}}</p>
+    <br>
+    <p>телефон: {{user.phone_number}}</p>
+    <br>
+    <p>Дата рождения: {{user.birth_date}}</p>
+    <a href="{% url 'history'%}"><p>
+        История заказов
+    </p></a>
+    <a href="{% url 'change_data1' %}"><p>Изменить логин/пароль</p></a>
+    <a href="{% url 'change_profile' %}"><p>Изменить данные профиля</p></a>
+    <a href="{% url 'logout' %}"><p>
+        Выйти из аккаунта
+    </p></a>
+    {% else %}
+
+    <p> Вы не авторизованы.</p>
+    <button type="submit" value="Log in" class="btn btn-light">
+        <a href="{% url 'login' %}"> Вход </a>
+    </button>
+    <button type="submit" value="Log in" class="btn btn-light">
+        <a href="{% url 'sign_up' %}"> Регистрация </a>
+    </button>
+    {% endif %}
+</div>
+{% endblock %}
+</body>
+</html>
