@@ -13,4 +13,22 @@
         <hr>
         <br>
     {% endfor %}
+    {% if user.is_authenticated %}
+            <a href="{% url 'AddHouse' company.pk %}" class="btn btn-info">Добавить дом к промокомпании</a>
+    {% else %}
+            <a href="{% url 'AddHouse' company.pk %}" class="btn disabled" >Добавить дом к промокомпании</a>
+    {% endif %}
+
+    <center><h3> Пользователи участвующие в компании </h3></center>
+    {% for user in users %}
+        <h3>{{user.name}} {{ user.surname }}</h3>
+        <hr>
+        <br>
+    {% endfor %}
+    {% if user.is_authenticated %}
+            <a href="{% url 'AddUser' company.pk %}" class="btn btn-info">Добавить пользователя к промокомпании</a>
+    {% else %}
+            <a href="{% url 'AddUser' company.pk %}" class="btn disabled">Добавить пользователя к промокомпании</a>
+    {% endif %}
+
 {% endblock %}
