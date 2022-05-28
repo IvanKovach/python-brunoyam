@@ -1,0 +1,15 @@
+{% extends "main/base.html" %}
+{% block title %}
+    <title>{{ title }}</title>
+{% endblock %}
+{% block content %}
+    <br>
+    <center><h3> Мои компании </h3></center>
+    {% for company in companies %}
+        <h3>{{company.company_name}}</h3>
+        <h4>{{company.company_description}}</h4>
+        <a href="{% url 'Company' company.pk %}" class="card-link">Подробнее о промо компании</a>
+        <hr>
+        <br>
+    {% endfor %}
+{% endblock %}

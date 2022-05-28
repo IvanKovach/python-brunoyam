@@ -1,0 +1,34 @@
+{% extends "main/base.html" %}
+{% block title %}
+    <title>{{ title }}</title>
+{% endblock %}
+{% block content %}
+    <center><h2> {{ company.company_name }} </h2></center>
+    <center><h4> {{ company.company_description }} </h4></center>
+    <br>
+    <center><h3> Дома участвующие в компании </h3></center>
+    {% for el in data %}
+        <h3>{{el.city}}</h3>
+        <h4>{{el.street}} {{ el.house_number}}</h4>
+        <hr>
+        <br>
+    {% endfor %}
+    {% if user.is_authenticated %}
+            <a href="{% url 'AddHouse' company.pk %}" class="btn btn-info">Добавить дом к промокомпании</a>
+    {% else %}
+            <a href="{% url 'AddHouse' company.pk %}" class="btn disabled" >Добавить дом к промокомпании</a>
+    {% endif %}
+
+    <center><h3> Пользователи участвующие в компании </h3></center>
+    {% for user in users %}
+        <h3>{{user.name}} {{ user.surname }}</h3>
+        <hr>
+        <br>
+    {% endfor %}
+    {% if user.is_authenticated %}
+            <a href="{% url 'AddUser' company.pk %}" class="btn btn-info">Добавить пользователя к промокомпании</a>
+    {% else %}
+            <a href="{% url 'AddUser' company.pk %}" class="btn disabled">Добавить пользователя к промокомпании</a>
+    {% endif %}
+
+{% endblock %}
